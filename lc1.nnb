@@ -1,0 +1,64 @@
+{
+    "cells": [
+        {
+            "language": "markdown",
+            "source": [
+                "# 1. 两数之和\r\n\r\n给定一个整数数组 nums 和一个整数目标值 target，请你在该数组中找出 和为目标值 target  的那 两个 整数，并返回它们的数组下标。\r\n\r\n你可以假设每种输入只会对应一个答案。但是，数组中同一个元素在答案里不能重复出现。\r\n\r\n你可以按任意顺序返回答案。"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "function twoSum(nums: number[], target: number): number[] {\r\n    let result: number[] = []\r\n    for (let j = 0; j < nums.length; j++) {\r\n        for (let k = j + 1; k < nums.length; k++) {\r\n            if (nums[j] + nums[k] === target) {\r\n                result = [j, k]\r\n                return result\r\n            }\r\n        }\r\n    }\r\n    return result\r\n};\r\ntwoSum([2, 7, 11, 15], 9)\r\ntwoSum([3, 2, 4], 6)"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "",
+                                ""
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "items": [
+                        {
+                            "mime": "text/plain",
+                            "value": [
+                                "[",
+                                "  \u001b[33m1\u001b[39m,",
+                                "  \u001b[33m2\u001b[39m",
+                                "]"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "通过维护一个哈希 Map 来减少计算量"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "这道题主要就是往后加，比较一下的事情\r\n但是写两个循环可能还是不够优雅？\r\n所以的话可以使用差结合 `Map` 来解决"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "function twoSum2(nums: number[], target: number): number[] {\r\n    let a = new Map()\r\n    for (let j = 0; j < nums.length; j++) {\r\n        const b = target - nums[j]\r\n        if (a.has(b)) {\r\n            return [a.get(b), nums[j]]\r\n        }\r\n        a.set(nums[j], j)\r\n    }\r\n};"
+            ],
+            "outputs": []
+        }
+    ]
+}

@@ -1,0 +1,67 @@
+{
+    "cells": [
+        {
+            "language": "markdown",
+            "source": [
+                "# 49. 字母异位词分组\r\n\r\n给你一个字符串数组，请你将 字母异位词 组合在一起。可以按任意顺序返回结果列表。\r\n\r\n字母异位词 是由重新排列源单词的所有字母得到的一个新单词。"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "49. 字母异位词分组\r\n\r\n给你一个字符串数组，请你将 字母异位词 组合在一起。可以按任意顺序返回结果列表。\r\n\r\n字母异位词 是由重新排列源单词的所有字母得到的一个新单词。"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "function groupAnagrams(strs: string[]): string[][] {\r\n    let a = new Map()\r\n    for (let i = 0; i < strs.length; i++) {\r\n        let strArr = strs[i].split('').sort().join('')\r\n        if (a.has(strArr))\r\n            a.get(strArr).push(strs[i])\r\n        else\r\n            a.set(strArr, [strs[i]])\r\n    }\r\n    return Array.from(a.values())\r\n};\r\n\r\ngroupAnagrams([\"eat\", \"tea\", \"tan\", \"ate\", \"nat\", \"bat\"])"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "",
+                                ""
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "items": [
+                        {
+                            "mime": "text/plain",
+                            "value": [
+                                "[",
+                                "  [",
+                                "    \u001b[32m'eat'\u001b[39m,",
+                                "    \u001b[32m'tea'\u001b[39m,",
+                                "    \u001b[32m'ate'\u001b[39m",
+                                "  ],",
+                                "  [",
+                                "    \u001b[32m'tan'\u001b[39m,",
+                                "    \u001b[32m'nat'\u001b[39m",
+                                "  ],",
+                                "  [",
+                                "    \u001b[32m'bat'\u001b[39m",
+                                "  ]",
+                                "]"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "这边也是用一个哈希表，但是需要注意的是，这边哈希表的 key 是一个 array 转成的 string，其实再其他语言里面可以直接用 array，只是在这边 js 可能再比较的时候地址不一样的 array 不会当成是同一个，所以先把它转换成一个 string 再比较就好啦"
+            ],
+            "outputs": []
+        }
+    ]
+}

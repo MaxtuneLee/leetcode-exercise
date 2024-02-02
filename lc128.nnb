@@ -1,0 +1,18 @@
+{
+    "cells": [
+        {
+            "language": "markdown",
+            "source": [
+                "# 128. 最长连续序列\r\n\r\n给定一个未排序的整数数组 nums ，找出数字连续的最长序列（不要求序列元素在原数组中连续）的长度。\r\n\r\n请你设计并实现时间复杂度为 O(n) 的算法解决此问题。"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "function longestConsecutive(nums: number[]): number {\r\n    let set = new Set(nums)\r\n    let longestCount = 0\r\n    for (const num of nums) {\r\n        if (!set.has(Number(num) - 1)) {\r\n            let currentCount = 1\r\n            let currentNum = Number(num)\r\n            while (set.has(Number(currentNum) + 1)) {\r\n                currentNum += 1\r\n                currentCount += 1\r\n            }\r\n            longestCount = Math.max(currentCount, longestCount)\r\n        }\r\n    }\r\n    return longestCount\r\n};\r\n"
+            ],
+            "outputs": []
+        }
+    ]
+}
