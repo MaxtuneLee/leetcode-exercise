@@ -1,0 +1,57 @@
+{
+    "cells": [
+        {
+            "language": "markdown",
+            "source": [
+                "# 283. 移动零\r\n给定一个数组 nums，编写一个函数将所有 0 移动到数组的末尾，同时保持非零元素的相对顺序。\r\n\r\n请注意 ，必须在不复制数组的情况下原地对数组进行操作。"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "/**\r\n Do not return anything, modify nums in-place instead.\r\n */\r\nfunction moveZeroes(nums) {\r\n    let length = nums.length\r\n    let end = nums.length - 1\r\n    for (let i = 0; i < length; i++) {\r\n        const num = nums[i]\r\n        // console.log(num)\r\n        // console.log(nums)\r\n        if (end <= i) break\r\n        if (num === 0) {\r\n            for (let j=i;j<length-1;j++){\r\n                nums[j] = nums[j+1]\r\n            }\r\n            nums[end] = 0\r\n            end--\r\n            i--\r\n        }\r\n    }\r\n    return nums\r\n};\r\nconsole.log(moveZeroes([0,0,1]))"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "5",
+                                "",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "// 上面不是最优方法，正确的方式应该用双指针。\r\n/**\r\n Do not return anything, modify nums in-place instead.\r\n */\r\nfunction moveZeroes(nums: number[]): void {\r\n    let length = nums.length\r\n    let b = 0\r\n    for (let a = 0;a< length;a++){\r\n        if (nums[b]===0){\r\n            if (nums[a]===0){\r\n            a++\r\n            continue\r\n        }\r\n        nums[b] = nums[a]\r\n        }\r\n        b++\r\n    }\r\n    while(b<length){\r\n        nums[++b] = 0\r\n    }\r\n    console.log(nums)\r\n};"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "// 另外一种借鉴了快排的做法\r\nfunction moveZeroes(nums: number[]): void {\r\n    let length = nums.length\r\n    let b = 0\r\n    for (let a = 0;a< length;a++){\r\n        if (nums[a]!==0){\r\n            nums[b++] = nums[a]\r\n        }\r\n    }\r\n    console.log(nums)\r\n};"
+            ],
+            "outputs": []
+        }
+    ]
+}
