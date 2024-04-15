@@ -1,0 +1,18 @@
+{
+    "cells": [
+        {
+            "language": "typescript",
+            "source": [
+                "function lengthOfLongestSubstring(s: string): number {\n    const dic = new Map();\n    let res: number = 0;\n    let i = -1;\n    for (let j = 0; j < s.length; j++) {\n      if (dic.has(s[j])) i = Math.max(dic.get(s[j]), i);\n      dic.set(s[j], j);\n      res = Math.max(res, j - i);\n    }\n    return res;\n  }\n  "
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "一个像双指针的滑动窗口，但是里面还没看懂为什么需要max"
+            ],
+            "outputs": []
+        }
+    ]
+}

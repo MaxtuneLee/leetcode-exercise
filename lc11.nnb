@@ -1,0 +1,25 @@
+{
+    "cells": [
+        {
+            "language": "markdown",
+            "source": [
+                "# 15. 三数之和\n\n给你一个整数数组 nums ，判断是否存在三元组 [nums[i], nums[j], nums[k]] 满足 i != j、i != k 且 j != k ，同时还满足 nums[i] + nums[j] + nums[k] == 0 。请\n\n你返回所有和为 0 且不重复的三元组。\n\n注意：答案中不可以包含重复的三元组。"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "> 用了一个首尾指针的方法"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "function maxArea(height: number[]): number {\n    let head = 0;\n    let tail = height.length - 1;\n    let max = -1;\n    for (let i = 0; i < height.length; i++) {\n      const width = tail - head;\n      width;\n      const result = width * Math.min(height[head], height[tail]);\n      result;\n      head;\n      tail;\n      if (max < result) {\n        max = result;\n      }\n      if (tail <= head) break;\n      if (height[head] > height[tail]) {\n        tail--;\n      } else {\n        head++;\n      }\n    }\n    return max;\n  }"
+            ],
+            "outputs": []
+        }
+    ]
+}

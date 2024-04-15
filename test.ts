@@ -1,16 +1,11 @@
-/**
- Do not return anything, modify nums in-place instead.
- */
-function moveZeroes(nums: number[]): void {
-    let length = nums.length
-    let b = 0
-    for (let a = 0;a< length;a++){
-        if (nums[a]!==0){
-            let swap = nums[b]
-            nums[b++] = nums[a]
-            nums[a] = swap
-        }
-    }
-    console.log(nums)
-};
-console.log(moveZeroes([0,1,0,3,12]))
+function lengthOfLongestSubstring(s: string): number {
+  const dic = new Map();
+  let res: number = 0;
+  let i = -1;
+  for (let j = 0; j < s.length; j++) {
+    if (dic.has(s[j])) i = Math.max(dic.get(s[j]), i);
+    dic.set(s[j], j);
+    res = Math.max(res, j - i);
+  }
+  return res;
+}
